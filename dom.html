@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM - 47 Practical Questions</title>
+
+    <style>
+        /* =========================
+           GENERAL STYLING
+        ========================== */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.6;
+        }
+
+        section {
+            border: 2px solid #333;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .active {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .dark {
+            background-color: #222;
+            color: white;
+        }
+
+        .card {
+            border: 1px solid #555;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .delete {
+            margin-left: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .student-pass {
+            border: 2px solid green;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .student-fail {
+            border: 2px solid red;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript DOM Practical — 47 Questions</h1>
+
+    <!-- =====================================================
+         QUESTION 1
+         Change text using getElementById()
+    ====================================================== -->
+
+    <section>
+        <h2>Q1. Change Text Using getElementById()</h2>
+
+        <h3 id="q1-title">Old Heading</h3>
+
+        <button id="q1-btn">
+            Change Heading
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 2
+         Change all paragraphs using querySelectorAll()
+    ====================================================== -->
+
+    <section>
+        <h2>Q2. Change All Paragraphs</h2>
+
+        <p class="q2-text">Paragraph One</p>
+        <p class="q2-text">Paragraph Two</p>
+        <p class="q2-text">Paragraph Three</p>
+
+        <button id="q2-btn">
+            Change Color
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 3
+         Hide an element
+    ====================================================== -->
+
+    <section>
+        <h2>Q3. Hide Paragraph</h2>
+
+        <p id="q3-text">
+            This paragraph will disappear.
+        </p>
+
+        <button id="q3-btn">
+            Hide
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 4
+         Show an element
+    ====================================================== -->
+
+    <section>
+        <h2>Q4. Show Paragraph</h2>
+
+        <p id="q4-text">
+            This paragraph can be hidden and shown.
+        </p>
+
+        <button id="q4-hide">
+            Hide
+        </button>
+
+        <button id="q4-show">
+            Show
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 5
+         Change image using setAttribute()
+    ====================================================== -->
+
+    <section>
+        <h2>Q5. Change Image</h2>
+
+        <img id="q5-image" src="https://via.placeholder.com/200x100?text=Old+Image" alt="Image">
+
+        <br>
+
+        <button id="q5-btn">
+            Change Image
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 6
+         Dark mode using classList.toggle()
+    ====================================================== -->
+
+    <section>
+        <h2>Q6. Dark Mode</h2>
+
+        <button id="q6-btn">
+            Toggle Dark Mode
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 7
+         Mouse enter / leave
+    ====================================================== -->
+
+    <section>
+        <h2>Q7. Mouse Enter / Leave</h2>
+
+        <div id="q7-box" class="box">
+            Hover Me
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 8
+         Increase font size
+    ====================================================== -->
+
+    <section>
+        <h2>Q8. Increase Font Size</h2>
+
+        <p id="q8-text">
+            This text will become larger.
+        </p>
+
+        <button id="q8-btn">
+            Increase Font
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 9
+         Show / Hide div
+    ====================================================== -->
+
+    <section>
+        <h2>Q9. Show / Hide Div</h2>
+
+        <div id="q9-box" class="box">
+            Show / Hide Me
+        </div>
+
+        <button id="q9-show">
+            Show
+        </button>
+
+        <button id="q9-hide">
+            Hide
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 10
+         Toggle active class
+    ====================================================== -->
+
+    <section>
+        <h2>Q10. Toggle Active Class</h2>
+
+        <div id="q10-box">
+            Click the button to toggle active class.
+        </div>
+
+        <button id="q10-btn">
+            Toggle Active
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 11
+         Create list dynamically
+    ====================================================== -->
+
+    <section>
+        <h2>Q11. Create List Dynamically</h2>
+
+        <input id="q11-input" placeholder="Enter student name">
+
+        <button id="q11-btn">
+            Add Student
+        </button>
+
+        <ul id="q11-list"></ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 12
+         Dynamic list with Delete
+    ====================================================== -->
+
+    <section>
+        <h2>Q12. Dynamic List With Delete</h2>
+
+        <input id="q12-input" placeholder="Enter item">
+
+        <button id="q12-btn">
+            Add Item
+        </button>
+
+        <ul id="q12-list"></ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 13
+         Dynamic list with Edit/Delete
+    ====================================================== -->
+
+    <section>
+        <h2>Q13. Dynamic List With Edit/Delete</h2>
+
+        <input id="q13-input" placeholder="Enter item">
+
+        <button id="q13-btn">
+            Add Item
+        </button>
+
+        <ul id="q13-list"></ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 14
+         Student cards
+    ====================================================== -->
+
+    <section>
+        <h2>Q14. Create Student Cards</h2>
+
+        <input id="q14-name" placeholder="Student Name">
+
+        <input id="q14-course" placeholder="Course">
+
+        <button id="q14-btn">
+            Add Student
+        </button>
+
+        <div id="q14-container"></div>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 15
+         Product cart counter
+    ====================================================== -->
+
+    <section>
+        <h2>Q15. Product Cart Counter</h2>
+
+        <h3>Product: Laptop</h3>
+        <p>Price: ₹50000</p>
+
+        <button id="q15-btn">
+            Add to Cart
+        </button>
+
+        <p>
+            Cart Items:
+            <span id="q15-count">0</span>
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 16
+         Mouse coordinates
+    ====================================================== -->
+
+    <section>
+        <h2>Q16. Mouse Coordinates</h2>
+
+        <p>
+            X:
+            <span id="q16-x">0</span>
+        </p>
+
+        <p>
+            Y:
+            <span id="q16-y">0</span>
+        </p>
+
+        <div id="q16-area" class="box">
+            Move Mouse Here
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 17
+         Display keyboard key
+    ====================================================== -->
+
+    <section>
+        <h2>Q17. Display Pressed Key</h2>
+
+        <input id="q17-input" placeholder="Press any key">
+
+        <p id="q17-result">
+            Key: -
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 18
+         Counter
+    ====================================================== -->
+
+    <section>
+        <h2>Q18. Counter</h2>
+
+        <button id="q18-minus">
+            -
+        </button>
+
+        <span id="q18-count">
+            0
+        </span>
+
+        <button id="q18-plus">
+            +
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 19
+         Character counter
+    ====================================================== -->
+
+    <section>
+        <h2>Q19. Character Counter</h2>
+
+        <textarea id="q19-message" placeholder="Type something..."></textarea>
+
+        <p>
+            Characters:
+            <span id="q19-count">0</span>
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 20
+         Enter key to add item
+    ====================================================== -->
+
+    <section>
+        <h2>Q20. Press Enter To Add Item</h2>
+
+        <input id="q20-input" placeholder="Enter item and press Enter">
+
+        <ul id="q20-list"></ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 21
+         Registration form validation
+    ====================================================== -->
+
+    <section>
+        <h2>Q21. Registration Form Validation</h2>
+
+        <form id="q21-form">
+
+            <input id="q21-name" placeholder="Name">
+
+            <input id="q21-email" placeholder="Email">
+
+            <input id="q21-password" type="password" placeholder="Password">
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+
+        <p id="q21-message"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 22
+         Email validation
+    ====================================================== -->
+
+    <section>
+        <h2>Q22. Email Validation</h2>
+
+        <input id="q22-email" placeholder="Enter email">
+
+        <button id="q22-btn">
+            Validate
+        </button>
+
+        <p id="q22-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 23
+         Password validation
+    ====================================================== -->
+
+    <section>
+        <h2>Q23. Password Validation</h2>
+
+        <input id="q23-password" type="password" placeholder="Minimum 8 characters">
+
+        <button id="q23-btn">
+            Validate
+        </button>
+
+        <p id="q23-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 24
+         Individual field errors
+    ====================================================== -->
+
+    <section>
+        <h2>Q24. Form Field Error Messages</h2>
+
+        <form id="q24-form">
+
+            <div>
+                <input id="q24-name" placeholder="Name">
+
+                <p id="q24-name-error" class="error"></p>
+            </div>
+
+            <div>
+                <input id="q24-email" placeholder="Email">
+
+                <p id="q24-email-error" class="error"></p>
+            </div>
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 25
+         Focus / Blur
+    ====================================================== -->
+
+    <section>
+        <h2>Q25. Focus And Blur</h2>
+
+        <input id="q25-input" placeholder="Focus on me">
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 26
+         Todo App
+    ====================================================== -->
+
+    <section>
+        <h2>Q26. Todo App</h2>
+
+        <input id="q26-input" placeholder="Enter task">
+
+        <button id="q26-btn">
+            Add
+        </button>
+
+        <ul id="q26-list"></ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 27
+         Student Manager
+    ====================================================== -->
+
+    <section>
+        <h2>Q27. Student Manager</h2>
+
+        <input id="q27-name" placeholder="Student Name">
+
+        <input id="q27-marks" type="number" placeholder="Marks">
+
+        <button id="q27-btn">
+            Add Student
+        </button>
+
+        <div id="q27-container"></div>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 28
+         Product Cart
+    ====================================================== -->
+
+    <section>
+        <h2>Q28. Product Cart</h2>
+
+        <h3>Laptop</h3>
+
+        <p>
+            Price:
+            ₹50000
+        </p>
+
+        <button id="q28-add">
+            Add Laptop
+        </button>
+
+        <p>
+            Cart Items:
+            <span id="q28-count">0</span>
+        </p>
+
+        <p>
+            Total:
+            ₹<span id="q28-total">0</span>
+        </p>
+
+        <ul id="q28-list"></ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 29
+         Live Search
+    ====================================================== -->
+
+    <section>
+        <h2>Q29. Live Search</h2>
+
+        <input id="q29-search" placeholder="Search language">
+
+        <ul id="q29-list">
+
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>C++</li>
+            <li>MongoDB</li>
+            <li>React</li>
+
+        </ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 30
+         Dark Mode
+    ====================================================== -->
+
+    <section>
+        <h2>Q30. Dark Mode</h2>
+
+        <button id="q30-btn">
+            Toggle Dark Mode
+        </button>
+
+        <p>
+            This page section supports dark mode.
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 31
+         Event Object
+    ====================================================== -->
+
+    <section>
+        <h2>Q31. Event Object</h2>
+
+        <button id="q31-btn">
+            Click Me
+        </button>
+
+        <p id="q31-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 32
+         event.target
+    ====================================================== -->
+
+    <section>
+        <h2>Q32. event.target</h2>
+
+        <button id="q32-btn">
+            Click Me
+        </button>
+
+        <p id="q32-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 33
+         Event Delegation
+    ====================================================== -->
+
+    <section>
+        <h2>Q33. Event Delegation</h2>
+
+        <p>
+            Click any list item to remove it.
+        </p>
+
+        <ul id="q33-list">
+
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>MongoDB</li>
+
+        </ul>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 34
+         Event Bubbling
+    ====================================================== -->
+
+    <section>
+        <h2>Q34. Event Bubbling</h2>
+
+        <div id="q34-parent" style="padding: 20px; border: 2px solid blue;">
+
+            Parent
+
+            <button id="q34-child">
+                Child
+            </button>
+
+        </div>
+
+        <p id="q34-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 35
+         stopPropagation
+    ====================================================== -->
+
+    <section>
+        <h2>Q35. stopPropagation()</h2>
+
+        <div id="q35-parent" style="padding: 20px; border: 2px solid blue;">
+
+            Parent
+
+            <button id="q35-child">
+                Child
+            </button>
+
+        </div>
+
+        <p id="q35-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 36
+         DOMContentLoaded
+    ====================================================== -->
+
+    <section>
+        <h2>Q36. DOMContentLoaded</h2>
+
+        <p id="q36-result">
+            Check console when page loads.
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 37
+         Window resize
+    ====================================================== -->
+
+    <section>
+        <h2>Q37. Window Resize</h2>
+
+        <p>
+            Width:
+            <span id="q37-width">0</span>
+        </p>
+
+        <p>
+            Height:
+            <span id="q37-height">0</span>
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 38
+         Scroll event
+    ====================================================== -->
+
+    <section style="height: 400px;">
+        <h2>Q38. Scroll Event</h2>
+
+        <p>
+            Scroll the page and check the value.
+        </p>
+
+        <p>
+            Scroll Y:
+            <span id="q38-scroll">0</span>
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 39
+         DOM Traversal
+    ====================================================== -->
+
+    <section>
+        <h2>Q39. DOM Traversal</h2>
+
+        <div id="q39-parent">
+
+            <h3>Heading</h3>
+
+            <p>Paragraph</p>
+
+            <button>
+                Button
+            </button>
+
+        </div>
+
+        <button id="q39-btn">
+            Check DOM
+        </button>
+
+        <p id="q39-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 40
+         Parent Element
+    ====================================================== -->
+
+    <section>
+        <h2>Q40. Parent Element</h2>
+
+        <div>
+
+            <p id="q40-child">
+                I have a parent.
+            </p>
+
+        </div>
+
+        <button id="q40-btn">
+            Show Parent
+        </button>
+
+        <p id="q40-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 41
+         Siblings
+    ====================================================== -->
+
+    <section>
+        <h2>Q41. Sibling Traversal</h2>
+
+        <div>
+
+            <p id="q41-first">
+                First
+            </p>
+
+            <p id="q41-second">
+                Second
+            </p>
+
+            <p id="q41-third">
+                Third
+            </p>
+
+        </div>
+
+        <button id="q41-btn">
+            Show Siblings
+        </button>
+
+        <p id="q41-result"></p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 42
+         Dynamic Card
+    ====================================================== -->
+
+    <section>
+        <h2>Q42. Dynamic Card</h2>
+
+        <input id="q42-name" placeholder="Name">
+
+        <input id="q42-course" placeholder="Course">
+
+        <button id="q42-btn">
+            Create Card
+        </button>
+
+        <div id="q42-container"></div>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 43
+         Show / Hide Password
+    ====================================================== -->
+
+    <section>
+        <h2>Q43. Show / Hide Password</h2>
+
+        <input id="q43-password" type="password" placeholder="Password">
+
+        <button id="q43-btn">
+            Show
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 44
+         Input event
+    ====================================================== -->
+
+    <section>
+        <h2>Q44. Live Input Event</h2>
+
+        <input id="q44-input" placeholder="Type something">
+
+        <p>
+            You typed:
+            <span id="q44-result"></span>
+        </p>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 45
+         Attribute manipulation
+    ====================================================== -->
+
+    <section>
+        <h2>Q45. Attribute Manipulation</h2>
+
+        <a id="q45-link" href="https://example.com">
+            Example Link
+        </a>
+
+        <br>
+
+        <button id="q45-btn">
+            Change Link
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 46
+         Remove element
+    ====================================================== -->
+
+    <section>
+        <h2>Q46. Remove Element</h2>
+
+        <div id="q46-box" class="box">
+            Remove Me
+        </div>
+
+        <button id="q46-btn">
+            Remove
+        </button>
+    </section>
+
+
+    <!-- =====================================================
+         QUESTION 47
+         Complete Shopping List
+    ====================================================== -->
+
+    <section>
+        <h2>Q47. Complete Shopping List</h2>
+
+        <input id="q47-input" placeholder="Enter shopping item">
+
+        <button id="q47-btn">
+            Add
+        </button>
+
+        <ul id="q47-list"></ul>
+    </section>
+
+
+    <!-- JavaScript -->
+    <script src="dom.js"></script>
+
+</body>
+
+</html>
